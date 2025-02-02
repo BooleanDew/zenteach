@@ -10,7 +10,7 @@ print(BASE_DIR)
 SECRET_KEY = 'django-insecure-tu_clave_secreta_aqui_123456789'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','zenteach-29wg.onrender.com', 'render.com', 'onrender.com']
 
