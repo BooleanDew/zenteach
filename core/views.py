@@ -18,10 +18,10 @@ import logging
 from pathlib import Path
 # Vistas principales
 def home(request):
-    logger = logging.getLogger(__name__)
+    
 
-    BASE_DIR = Path(__file__).resolve().parent.parent
-    logger.info(f"BASE_DIR: {BASE_DIR}")
+    
+    
     servicios_destacados = Servicio.objects.filter(activo=True).annotate(
         total_reservas=Count('reservas')
     ).order_by('-total_reservas')[:3]
@@ -110,13 +110,15 @@ def profile(request):
 
 @login_required
 def nueva_reserva(request):
+    BASE_DIR = Path(__file__).resolve().parent.parent
     usuario = request.user.id
     servicios = Servicio.objects.all()
     fecha_actual = datetime.now().strftime('%Y-%m-%dT%H:%M:%S%z')
     context = {
         'fecha':fecha_actual,
         'usuario':usuario,
-        'servicios':servicios
+        'servicios':servicios,
+        'archivo':BASE_DIR
         
     }
     return render(request, "core/nueva_reserva.html",context)
