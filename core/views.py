@@ -108,9 +108,8 @@ def profile(request):
 def nueva_reserva(request):
     usuario = request.user.id
     servicios = Servicio.objects.all()
-    fecha_actual = datetime.now().strftime('%Y-%m-%dT%H:%M:%S%z')
+    ##fecha_actual = datetime.now().strftime('%Y-%m-%dT%H:%M:%S%z')
     context = {
-        'fecha':fecha_actual,
         'usuario':usuario,
         'servicios':servicios
     }
